@@ -14,12 +14,11 @@ module PinYin
         RMMSeg::Dictionary.load_dictionaries
       end
 
-      def romanize(str, tone=nil, include_punctuations=false)
+      def romanize(str, tone=nil, include_punctuations=false, data_hash={})
         return [] unless str && str.length > 0
-
         words = segment str
-
-        base = @simple.romanize(str, tone, include_punctuations)
+        
+        base = @simple.romanize(str, tone, include_punctuations, data_hash)
         patch = words.map {|w| format(w, tone) }.flatten
 
         apply base, patch

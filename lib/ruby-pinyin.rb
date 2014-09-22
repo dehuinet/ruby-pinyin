@@ -11,7 +11,13 @@ module PinYin
     def romanize(str, tone=nil, include_punctuations=false)
       backend.romanize(str, tone, include_punctuations)
     end
+
+    def romanize_hash(str, data_hash={})
+      backend.romanize(str, nil, false, data_hash)
+    end
+
     alias :of_string :romanize
+    alias :of_string_hash :romanize_hash
 
     def permlink(str, sep='-')
       of_string(str).join(sep)
