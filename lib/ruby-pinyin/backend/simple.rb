@@ -66,6 +66,7 @@ module PinYin
 
       def format(readings, tone, index=0)
         index = 0 unless index
+        index = 0 if index >= readings.size
         case tone
         when :unicode
           readings[index]
