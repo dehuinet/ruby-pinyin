@@ -24,6 +24,11 @@ module PinYin
         apply base, patch
       end
 
+      def readings(str)
+        return [] unless str && str.length > 0
+        base = @simple.readings(str)
+      end
+
       def segment(str)
         algor = RMMSeg::Algorithm.new str
 

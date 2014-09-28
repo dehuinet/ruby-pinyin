@@ -16,6 +16,10 @@ module PinYin
       backend.romanize(str, nil, false, data_hash)
     end
 
+    def readings(str)
+      backend.readings(str)
+    end
+
     alias :of_string :romanize
     alias :of_string_hash :romanize_hash
 

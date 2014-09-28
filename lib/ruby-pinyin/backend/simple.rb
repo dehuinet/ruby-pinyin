@@ -44,6 +44,18 @@ module PinYin
         res.map {|phrase| phrase.split(/\s+/)}.flatten
       end
 
+      def readings(str)
+        res = {}
+        return res unless str && !str.empty?
+
+        str.unpack('U*').each_with_index do |t,idx|
+          code = sprintf('%x',t).upcase
+          readings = codes[code]
+          res.store(t, readings)
+        end
+        res
+      end
+
       private
 
       def codes
